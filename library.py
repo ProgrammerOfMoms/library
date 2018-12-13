@@ -98,6 +98,7 @@ def angryReader(year):
     students.sort(key = keyForPoints, reverse = True)#sorting list by points
 
     maxPoints = students[0].points
+    print(maxPoints)
     #defining winners
     for student in students:
         if student.points == maxPoints:
