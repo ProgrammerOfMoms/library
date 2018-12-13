@@ -17,10 +17,10 @@ connection = connect("root", "Pasbot20!8","localhost","LIBRARY") #connect to db
 #function of executing sql-requests
 def executeRequest(sql):
     with connection.cursor() as cursor:
-        try:
-            countOfResponses = cursor.execute(sql)
-        except:
-            return -1
+        #try:
+        countOfResponses = cursor.execute(sql)
+        #except:
+            #return -1
         if countOfResponses!=0:
             return list(cursor.fetchall())
         else:
