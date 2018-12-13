@@ -52,7 +52,7 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
-        student = Student(id) #create new student
+        student = Student(id[0]) #create new student
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
             if month<10:
@@ -91,7 +91,7 @@ def angryReader(year):
 def main():
     winners = angryReader(2017)
     for winner in winners:
-        print(winner.id, " ", winner.name)
+        print(winner.id[0], " ", winner.name)
 
 if __name__=="__main__":
     main()
