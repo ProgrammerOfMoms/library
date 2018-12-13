@@ -30,7 +30,7 @@ class Student:
     def __init__(self, id):
         self.id = id
         sql = "SELECT name FROM Students WHERE id = "+str(id)
-        self.name = executeRequest(sql)[0]
+        self.name = executeRequest(sql)[0][0]
     points = 0
 
 #function of getting avg time of reading one book by month one student
