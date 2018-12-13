@@ -91,7 +91,7 @@ def angryReader(year):
 def main():
     winners = angryReader(2017)
     for winner in winners:
-        print(winner.id[0], " ", winner.name)
+        print(winner.id, " ", winner.name)
 
 if __name__=="__main__":
     main()
