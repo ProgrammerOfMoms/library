@@ -60,28 +60,17 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
-        needAdd = True#flag for adding student in list
-        s = isExist(id[0], students)#student existence check
-        print(s)
-        #creating new student if it's not done yet
-        if s ==-1:
-            student = Student(id[0])
-        #else we select existing student
-        else:
-            print("ya tut")
-            student = s
-            print(student.points)
-            needAdd = False
+        student = Student(id[0]) #creating new student
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
             if month<10:
                 startDate = str(year)+"-0"+str(month)+"-01"
                 endDate = str(year)+"-0"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
-                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"'"
+                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
             else:
                 startDate = str(year)+"-"+str(month)+"-01"
                 endDate = str(year)+"-"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
-                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"'"
+                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
             books = executeRequest(sql) #getting books
             if books!=0 and books!=-1: #if student read one book in month at least
                 countOfBooks = len(books)
