@@ -63,7 +63,7 @@ def angryReader(year):
         s = isExist(id[0], students)
         print(s)
         #creating new student if it's not done yet
-        if s!=-1:
+        if s ==-1:
             student = Student(id[0])
         #else we select existing student
         else:
