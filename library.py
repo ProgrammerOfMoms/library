@@ -30,7 +30,7 @@ class Student:
     def __init__(self, id):
         self.id = id
         sql = "SELECT name FROM Students WHERE id = "+str(id)
-        self.name = executeRequest(sql)
+        self.name = executeRequest(sql)[0]
     points = 0
 
 #function of getting avg time of reading one book by month one student
@@ -52,6 +52,8 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
+        print("id = ", id)
+        print("goodid = ", id[0])
         student = Student(id[0]) #create new student
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
