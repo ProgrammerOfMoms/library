@@ -60,8 +60,11 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
+        print("for ",id)
         student = Student(id[0]) #creating new student
         for month in range(1,12): #for each month in year
+            countOfBooks = 0
+            print("in ",month)
             #generating sql request for getting list of books which student read in month
             if month<10:
                 startDate = str(year)+"-0"+str(month)+"-01"
@@ -75,16 +78,16 @@ def angryReader(year):
             if books!=0 and books!=-1: #if student read one book in month at least
                 countOfBooks = len(books)
                 student.points += countOfBooks*3 #for each read book student get 3 points
+                print("for book count:", countOfBooks*3)
             
-                #if student read more than 5 books in month he get 5 extra points
-                if countOfBooks>5:
+                
+                if countOfBooks>5: #if student read more than 5 books in month he get 5 extra points
                     student.points+=5
-            
-                #getting avg time of reading one book in month
-                avgTime = getAvgTime(books)
-                #the less avg time the more points which student will get 
-                student.points+=1/(avgTime/calendar.monthrange(year,month)[1])
-        
+                    print("for more 5 books", 5)
+                
+                avgTime = getAvgTime(books) #getting avg time of reading one book in month
+                student.points+=1/(avgTime/calendar.monthrange(year,month)[1]) #the less avg time the more points which student will get 
+                print("for time: ",avgTime/calendar.monthrange(year,month)[1])
         students.append(student)#adding student in list of students
     students.sort(key = keyForPoints, reverse = True)#sorting list by points
 
