@@ -46,6 +46,14 @@ def getAvgTime(books):
 def keyForPoints(student):
     return student.points
 
+
+#function of searching student in list of students
+def isExist(id, students):
+    for student in students:
+        if id == student.id:
+            return student
+    return -1
+
 def angryReader(year):
     students = []
     winners = []
@@ -54,7 +62,13 @@ def angryReader(year):
     for id in idOfStudents:
         print("id = ", id)
         print("goodid = ", id[0])
-        student = Student(id[0]) #create new student
+        s = isExist(id[0], students)
+        #creating new student if it's not done yet
+        if s!=-1
+            student = Student(id[0])
+        #else we select existing student
+        else:
+            student = s
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
             if month<10:
