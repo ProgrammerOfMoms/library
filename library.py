@@ -51,7 +51,7 @@ def keyForPoints(student):
 def isExist(id, students):
     for student in students:
         if id == student.id:
-            return student
+            return &student
     return -1
 
 def angryReader(year):
@@ -112,7 +112,7 @@ def main():
     winners = angryReader(2017)
     if winners !=[]:
         for winner in winners:
-            print(winner.id, " ", winner.name)
+            print(winner.id, " ", winner.name, " ", winner.points)
     else:
          print ("No winners")
 
