@@ -84,8 +84,8 @@ def angryReader(year):
                 avgTime = getAvgTime(books)
                 #the less avg time the more points which student will get 
                 student.points+=1/(avgTime/calendar.monthrange(year,month)[1])
-        if needAdd:
-            students.append(student)#adding student in list of students
+        
+        students.append(student)#adding student in list of students
     students.sort(key = keyForPoints, reverse = True)#sorting list by points
 
     maxPoints = students[0].points
