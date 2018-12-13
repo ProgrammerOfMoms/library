@@ -67,10 +67,12 @@ def angryReader(year):
                 startDate = str(year)+"-0"+str(month)+"-01"
                 endDate = str(year)+"-0"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
                 sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
+                print(sql)
             else:
                 startDate = str(year)+"-"+str(month)+"-01"
                 endDate = str(year)+"-"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
                 sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
+                print(sql)
             books = executeRequest(sql) #getting books
             print(books)
             if books!=0 and books!=-1: #if student read one book in month at least
