@@ -74,6 +74,7 @@ def angryReader(year):
             books = executeRequest(sql) #getting books
             if books!=0 and books!=-1: #if student read one book in month at least
                 countOfBooks = len(books)
+                print("AAAAA",countOfBooks)
                 student.points += countOfBooks*3 #for each read book student get 3 points
             
                 #if student read more than 5 books in month he get 5 extra points
