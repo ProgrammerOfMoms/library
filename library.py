@@ -37,8 +37,8 @@ class Student:
 def getAvgTime(books):
     time = 0
     for book in books:
-        startDay = book[0][8:len(book[1])]#it's day when student took the book
-        endDay = book[1][8:len(book[1])]#it's day when student returned the book
+        startDay = book[0].day#it's day when student took the book
+        endDay = book[1].day#it's day when student returned the book
         time += int(endDay) - int(startDay)
     return time/len(books)
 
