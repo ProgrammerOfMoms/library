@@ -68,6 +68,7 @@ def angryReader(year):
             student = Student(id[0])
         #else we select existing student
         else:
+            print("ya tut")
             student = s
             print(student.points)
             needAdd = False
