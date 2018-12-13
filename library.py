@@ -51,7 +51,7 @@ def keyForPoints(student):
 def isExist(id, students):
     for student in students:
         if id == student.id:
-            return &student
+            return student
     return -1
 
 def angryReader(year):
@@ -69,6 +69,7 @@ def angryReader(year):
         #else we select existing student
         else:
             student = s
+            print(student.points)
             needAdd = False
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
