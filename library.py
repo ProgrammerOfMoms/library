@@ -110,7 +110,7 @@ def angryReader(year):
 
 def main():
     winners = angryReader(2017)
-    if winner !=[]:
+    if winners !=[]:
         for winner in winners:
             print(winner.id, " ", winner.name)
     else:
