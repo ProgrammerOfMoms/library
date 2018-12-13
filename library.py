@@ -66,12 +66,12 @@ def angryReader(year):
             if month<10:
                 startDate = str(year)+"-0"+str(month)+"-01"
                 endDate = str(year)+"-0"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
-                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
+                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id[0])
                 print(sql)
             else:
                 startDate = str(year)+"-"+str(month)+"-01"
                 endDate = str(year)+"-"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
-                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id)
+                sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id[0])
                 print(sql)
             books = executeRequest(sql) #getting books
             print(books)
