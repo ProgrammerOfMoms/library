@@ -60,9 +60,8 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
-        print("id = ", id)
-        print("goodid = ", id[0])
         s = isExist(id[0], students)
+        print(s)
         #creating new student if it's not done yet
         if s!=-1:
             student = Student(id[0])
