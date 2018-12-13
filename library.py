@@ -17,10 +17,10 @@ connection = connect("root", "Pasbot20!8","localhost","LIBRARY") #connect to db
 #function of executing sql-requests
 def executeRequest(sql):
     with connection.cursor() as cursor:
-        #try:
-        countOfResponses = cursor.execute(sql)
-        #except:
-            #return -1
+        try:
+            countOfResponses = cursor.execute(sql)
+        except:
+            return -1
         if countOfResponses!=0:
             return list(cursor.fetchall())
         else:
@@ -67,17 +67,13 @@ def angryReader(year):
                 startDate = str(year)+"-0"+str(month)+"-01"
                 endDate = str(year)+"-0"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
                 sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id[0])
-                print(sql)
             else:
                 startDate = str(year)+"-"+str(month)+"-01"
                 endDate = str(year)+"-"+str(month)+"-"+str(calendar.monthrange(year,month)[1])
                 sql = "SELECT issued, returned FROM St_B WHERE issued BETWEEN '"+startDate+"' AND '"+endDate+"' AND returned <= '"+endDate+"' AND id_st = "+str(id[0])
-                print(sql)
             books = executeRequest(sql) #getting books
-            print(books)
             if books!=0 and books!=-1: #if student read one book in month at least
                 countOfBooks = len(books)
-                print("AAAAA",countOfBooks)
                 student.points += countOfBooks*3 #for each read book student get 3 points
             
                 #if student read more than 5 books in month he get 5 extra points
