@@ -87,7 +87,7 @@ def angryReader(year):
                 
                 avgTime = getAvgTime(books) #getting avg time of reading one book in month
                 student.points+=1/(avgTime/calendar.monthrange(year,month)[1]) #the less avg time the more points which student will get 
-                print("for time: ",avgTime/calendar.monthrange(year,month)[1])
+                print("for time: ",1/(avgTime/calendar.monthrange(year,month)[1]))
         students.append(student)#adding student in list of students
     students.sort(key = keyForPoints, reverse = True)#sorting list by points
 
