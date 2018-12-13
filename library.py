@@ -60,7 +60,8 @@ def angryReader(year):
     sql = "SELECT id FROM Students"
     idOfStudents = executeRequest(sql) #getting list of id students
     for id in idOfStudents:
-        s = isExist(id[0], students)
+        needAdd = True#flag for adding student in list
+        s = isExist(id[0], students)#student existence check
         print(s)
         #creating new student if it's not done yet
         if s ==-1:
@@ -68,6 +69,7 @@ def angryReader(year):
         #else we select existing student
         else:
             student = s
+            needAdd = False
         for month in range(1,12): #for each month in year
             #generating sql request for getting list of books which student read in month
             if month<10:
@@ -91,16 +93,17 @@ def angryReader(year):
                 avgTime = getAvgTime(books)
                 #the less avg time the more points which student will get 
                 student.points+=1/(avgTime/calendar.monthrange(year,month)[1])
-        students.append(student)#adding student in list of students
-        students.sort(key = keyForPoints, reverse = True)#sorting list by points
+        if needAdd:
+            students.append(student)#adding student in list of students
+    students.sort(key = keyForPoints, reverse = True)#sorting list by points
 
-        maxPoints = students[0].points
-        #defining winners
-        for student in students:
-            if student.points == maxPoints:
-                winners.append(student)
-            else:
-                break #if points of student are not equal max points we can to out from loop because list of students is sorted by points
+    maxPoints = students[0].points
+    #defining winners
+    for student in students:
+        if student.points == maxPoints:
+            winners.append(student)
+        else:
+            break #if points of student are not equal max points we can to out from loop because list of students is sorted by points
     return winners
 
 def main():
