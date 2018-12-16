@@ -11,7 +11,7 @@ def connect(user, password, host, db):
     )
     return cnx
 
-connection = connect("root", "Pasbot20!8","localhost","LIBRARY") #connect to db
+connection = connect(...) #connect to db
 
 
 #function of executing sql-requests
